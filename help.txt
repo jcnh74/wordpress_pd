@@ -1,0 +1,12 @@
+docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=eWKvFrtZHpCzzDUv -e MYSQL_ROOT_PASSWORD=yes -e MYSQL_RANDOM_ROOT_PASSWORD=yes
+docker run --name wordpress --link adoring_babbage:mysql -d wordpress
+
+eugeneware/docker-wordpress-nginx
+
+
+gcloud container clusters create vvsmedia \
+    --num-nodes 1 \
+    --machine-type g1-small
+gcloud compute instances list
+kubectl run wordpress --image=eugeneware/docker-wordpress-nginx --port=80
+kubectl expose deployment wordpress --type=LoadBalancer
